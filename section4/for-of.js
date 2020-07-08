@@ -10,3 +10,4 @@ function forIn(){
         console.log(globalArray[i]);
     }   
 }
+
