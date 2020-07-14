@@ -33,8 +33,8 @@ const myObj = {
     reunTimeout(){
         setTimeout(function(){
             console.log(this===window);
-            this.printData().bind(this); // 오류발생 this가 지목하는것은 윈도우라 안됌.
-        },200);
+            this.printData(); // 오류발생 this가 지목하는것은 윈도우라 안됌.
+        }.bind(this),200);
     },
     printData(){
         console.log('hi');
@@ -59,7 +59,7 @@ const myObj = {
 const el = document.querySelector('el');
 
 const myObj ={
-    register(){
+    register:()=>{
         el.addEventListener('click',(evt)=>{
             this.printData(evt.target); //선언되어진 부분에서 this가 가리킵니다.
         });
@@ -77,11 +77,9 @@ myObj.register();
     * 해당파라미터 값이 입력되지 않으면 디폴트 값을 이용합니다.
     * 이것은 객체값도 문제없이 사용이 가능합니다.
 ```js
-function sum(value,size){
+function sum(value=3,size=1){
     return value * size;
 }
-
-console.log(sum(3,10));
 ```
 ---
 * rest parameters
@@ -89,7 +87,14 @@ console.log(sum(3,10));
     * arguments는 단순하게 console.log라고 작성을하면 배열이 라고 적혀있지만 dir로 체크를하면 object arguments로 출력이 되어있습니다.
     * 매개변수에 점이 들어가면 배열로 받습니다.
 ```js
-function checkNum(){
+const data ={
+    name:'kim'
+    age:24
+}
+checkNum(data)
+
+function checkNum({name='park'}, ...data){
+    console.log(arguments)
     const arg = Array.prototype.slice.call(arguments);
     arg.every((v)=>typeof v ==='number')
 }
