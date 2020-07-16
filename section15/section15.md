@@ -65,7 +65,8 @@ let proxy = new Proxy({name : 'name_pre' , changedValue : 0},{
     * v(value) : 변경할 값
 
 3. 프록시는 해당 값을 입력, 프록시1은 해당값에 -1를 해줍니다.
-![proxy2](./proxysetting.png)
+
+![proxy2](./proxysetting.png)  
 * 프록시를 각각 선언해 줍니다.  
 ![proxy2](./proxyprint.png)
 * 각각 입력된 초기 값들입니다.  
